@@ -52,7 +52,7 @@
 				src="${pageContext.request.contextPath}/assets/images/admin_logo.png" />
 		</h1>
 		<ul class="rt_nav">
-		<li><a href="tzzupss" class="set_icon">账号设置</a></li>
+		<li><a href="tzzup" class="set_icon">账号设置</a></li>
 		
 			<li><a href="tzlogin" class="quit_icon">安全退出</a></li>
 		</ul>
@@ -62,13 +62,26 @@
 	<aside class="lt_aside_nav content mCustomScrollbar">
 
 		<ul>
-			
+			<li>
+				<dl>
+					<dt>用户管理</dt>
+					<!--当前链接则添加class:active-->
+					<dd>
+						<a href="sy">用户列表</a>
+					</dd>
+					<dd>
+						<a href="tjyh">添加用户</a>
+					</dd>
+				</dl>
+			</li>
 						<li>
 				<dl>
 					<dt>图书管理</dt>
-					
 					<dd>
-						<a href="tzkccg"  class="active">库存列表</a>
+						<a href="tzhw" class="active">图书列表</a>
+					</dd>
+					<dd>
+						<a href="tzkc">库存列表</a>
 					</dd>					
 				</dl>
 			</li>
@@ -76,12 +89,33 @@
 				<dl>
 					<dt>入库管理</dt>					
 					<dd>
-						<a href="tzrkcg">新建入库单</a>
+						<a href="tzrk">新建入库单</a>
 					</dd>					
-					
+					<dd>
+						<a href="tzrksh">入库单审核</a>
+					</dd>
 				</dl>
 			</li>
-			
+			<li>
+				<dl>
+					<dt>出库管理</dt>									
+					<dd>
+						<a href="tzck" >新建出库单</a>
+					</dd>
+					<dd>
+						<a href="tzcksh">出库单审核</a>
+					</dd>
+
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>报表管理</dt>
+					<dd>
+						<a href="tzbb">生成报表</a>
+					</dd>
+				</dl>
+			</li>	
 		</ul>
 	</aside>
 
@@ -92,10 +126,10 @@
 				<h2 class="fl">图书列表</h2>
 			</div>
 			<section class="mtb">
-			<form action="tzkccg" method="post">
+			<form action="tzhw" method="post">
 			
 				<input type="text" name="name" id="name" class="textbox textbox_225"
-					placeholder="输入图书名称" /> <input type="submit"
+					placeholder="输入商品名称" /> <input type="submit"
 					value="查询" class="group_btn" />
 					</form>
 			</section>
@@ -109,7 +143,7 @@
 					<th>联系电话</th>
 					<th>更新时间</th>
 					<th>责任人</th>
-					
+					<th>操作</th>
 				</tr>
 				<tbody id="list">
 					<c:forEach items="${list}" var="list" varStatus="num">
@@ -122,7 +156,11 @@
 							<td id="phone" class="center">${list.phone}</td>
 							<td id="date" class="center">${list.date}</td>
 							<td id="zrr" class="center">${list.zrr}</td>
-							
+							<td class="center"> 
+							<a href="xj?id=${list.id}">
+							<input type="button" class="link_btn" value="下架" >
+								</a>
+								</td>
 
 						</tr>
 					</c:forEach>
